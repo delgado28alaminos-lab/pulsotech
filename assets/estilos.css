@@ -124,3 +124,17 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .card-art[data-cat="Salud"]{background:color-mix(in srgb,var(--teal-soft) 60%,var(--surface))}
 .card-art[data-cat="Salud"]::after{background:var(--teal)}
 .card-art[data-cat="Entrenamiento"]{background:color-mix(in srgb,var(--accent-soft) 70%,var(--surface))}
+/* Categorías */
+a.chip-lg{text-decoration:none;transition:background .15s,border-color .15s}
+.hero a.chip-lg:hover{background:rgba(255,255,255,.18)}
+.cat-head{padding:40px 0 8px}
+.cat-head h1{margin:6px 0 8px}
+.cat-head .hero-chips{margin-top:16px}
+.cat-head .chip-lg{border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.cat-head .chip-lg:hover{border-color:var(--accent)}
+.cat-head .chip-on{background:var(--accent);border-color:var(--accent);color:#fff}
+.crumbs a{color:inherit}
+.cat-head .lead{color:var(--muted)}
+.card-art[data-cat="Running"]{background:color-mix(in srgb,var(--accent-soft) 85%,var(--surface))}
+.card-art[data-cat="Ciclismo"]{background:color-mix(in srgb,var(--teal-soft) 80%,var(--surface))}
+.card-art[data-cat="Ciclismo"]::after{background:var(--teal)}

@@ -3,7 +3,7 @@
 
 Uso: python3 build.py   (necesita pandoc)
 """
-import html, json, re, shutil, subprocess
+import html, json, re, shutil, subprocess, unicodedata
 from datetime import date
 from pathlib import Path
 
@@ -38,6 +38,12 @@ ARTICLES = {
     "18-limpiar-correa-reloj.md": {"cat": "Relojes", "date": "2026-10-20", "emoji": "🧼"},
     "19-auriculares-deporte.md": {"cat": "Entrenamiento", "date": "2026-10-20", "emoji": "🎧"},
     "20-configurar-garmin-primera-vez.md": {"cat": "Relojes", "date": "2026-10-20", "emoji": "⚙️"},
+    "21-empezar-a-correr-con-app.md": {"cat": "Running", "date": "2026-10-20", "emoji": "🏃"},
+    "22-apps-gimnasio.md": {"cat": "Apps", "date": "2026-10-20", "emoji": "🏋️"},
+    "23-reloj-para-nadar.md": {"cat": "Relojes", "date": "2026-10-20", "emoji": "🏊"},
+    "24-bascula-inteligente.md": {"cat": "Salud", "date": "2026-10-20", "emoji": "⚖️"},
+    "25-ciclocomputador-o-movil-bici.md": {"cat": "Ciclismo", "date": "2026-10-20", "emoji": "🚴"},
+    "26-apps-entrenar-en-casa.md": {"cat": "Entrenamiento", "date": "2026-10-20", "emoji": "🏠"},
 }
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
           "septiembre", "octubre", "noviembre", "diciembre"]
@@ -146,6 +152,29 @@ def layout(*, title, description, path, body, extra_head=""):
 """
 
 
+def cat_slug(c):
+    return unicodedata.normalize("NFKD", c).encode("ascii", "ignore").decode().lower().replace(" ", "-")
+
+
+CAT_INFO = {
+    "Fútbol": "Tecnología para jugadores de fútbol: GPS, velocidad, calentamiento y apps para entrenar con balón.",
+    "Relojes": "Guías para elegir, configurar y cuidar relojes deportivos, smartwatches y pulseras de actividad.",
+    "Apps": "Las mejores apps para entrenar, dormir mejor y sacar partido a tu reloj o tu móvil.",
+    "Salud": "Pasos, pulso y hábitos medidos con tecnología, explicados de forma sencilla.",
+    "Running": "Tecnología y apps para empezar a correr y mejorar tus carreras.",
+    "Ciclismo": "Ciclocomputadores, relojes, sensores y apps para salir en bici con datos.",
+    "Entrenamiento": "Cómo usar los datos de tu reloj para entrenar mejor: zonas de pulso, VO2 máx, HRV y más.",
+}
+
+
+def chips_html(cats, current=None):
+    out = []
+    for c in cats:
+        cls = "chip chip-lg chip-on" if c == current else "chip chip-lg"
+        out.append(f'<a class="{cls}" href="/categoria/{cat_slug(c)}/">{html.escape(c)}</a>')
+    return "".join(out)
+
+
 def card(a):
     e = html.escape
     return f"""<article class="card">
@@ -183,7 +212,7 @@ def article_page(a, others):
     body = f"""<article class="post">
   <header class="post-head">
     <div class="wrap narrow">
-      <p class="crumbs"><a href="/">Inicio</a> <span aria-hidden="true">/</span> {e(a['cat'])}</p>
+      <p class="crumbs"><a href="/">Inicio</a> <span aria-hidden="true">/</span> <a href="/categoria/{cat_slug(a['cat'])}/">{e(a['cat'])}</a></p>
       <h1>{e(a['title'])}</h1>
       <p class="post-meta">Por <strong>Fer</strong> · {nice_date(a['date'])} · {a['minutes']} min de lectura</p>
     </div>
@@ -206,7 +235,7 @@ def article_page(a, others):
 def home_page(articles):
     cards = "\n".join(card(a) for a in articles)
     cats = sorted({a["cat"] for a in articles})
-    chips = "".join(f'<span class="chip chip-lg">{html.escape(c)}</span>' for c in cats)
+    chips = chips_html(cats)
     body = f"""<section class="hero">
   <div class="wrap hero-in">
     <div class="hero-text">
@@ -232,6 +261,32 @@ def home_page(articles):
                   path="/", body=body)
 
 
+def category_page(cat, items, cats):
+    cards = "\n".join(card(a) for a in items)
+    desc = CAT_INFO.get(cat, f"Artículos de {cat} en {NAME}.")
+    body = f"""<section class="cat-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Inicio</a> <span aria-hidden="true">/</span> Categoría</p>
+    <h1>{html.escape(cat)}</h1>
+    <p class="lead">{html.escape(desc)}</p>
+    <div class="hero-chips">{chips_html(cats, cat)}</div>
+  </div>
+</section>
+<section class="wrap" aria-label="Artículos">
+  <p class="meta">{len(items)} artículos</p>
+  <div class="grid">
+{cards}
+  </div>
+</section>"""
+    return layout(title=f"{cat}: guías y artículos | {NAME}", description=desc, path=f"/categoria/{cat_slug(cat)}/", body=body)
+
+
+def related_for(a, articles):
+    same = [o for o in articles if o is not a and o["cat"] == a["cat"]]
+    rest = [o for o in articles if o is not a and o["cat"] != a["cat"]]
+    return (same + rest)[:3]
+
+
 def static_page(p):
     body = f"""<article class="post">
   <header class="post-head">
@@ -255,12 +310,15 @@ def main():
         shutil.rmtree(OUT)
     shutil.copytree(ROOT / "assets", OUT)
     articles = [parse_article(ROOT / "articulos" / n) for n in ARTICLES]
-    articles.sort(key=lambda a: a["date"], reverse=True)
+    articles = [a for _, a in sorted(enumerate(articles), key=lambda t: (t[1]["date"], t[0]), reverse=True)]
     pages = [parse_page(p) for p in sorted((ROOT / "paginas").glob("*.md"))]
 
     write("index.html", home_page(articles))
     for a in articles:
-        write(f"{a['slug']}/index.html", article_page(a, [o for o in articles if o is not a][:3]))
+        write(f"{a['slug']}/index.html", article_page(a, related_for(a, articles)))
+    cats = sorted({a["cat"] for a in articles})
+    for c in cats:
+        write(f"categoria/{cat_slug(c)}/index.html", category_page(c, [a for a in articles if a["cat"] == c], cats))
     for p in pages:
         write(f"{p['slug']}/index.html", static_page(p))
     write("404.html", layout(title=f"Página no encontrada | {NAME}", description="Esta página no existe.", path="/404.html",
@@ -268,7 +326,8 @@ def main():
                                   '<p>Puede que el enlace esté mal escrito o que el artículo se haya movido.</p>'
                                   '<p><a href="/">Volver al inicio</a></p></section>'))
 
-    urls = ["/"] + [f"/{a['slug']}/" for a in articles] + [f"/{p['slug']}/" for p in pages]
+    urls = (["/"] + [f"/{a['slug']}/" for a in articles] + [f"/categoria/{cat_slug(c)}/" for c in cats]
+            + [f"/{p['slug']}/" for p in pages])
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
           + "".join(f"  <url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
