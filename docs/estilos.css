@@ -123,3 +123,4 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .prose h2{scroll-margin-top:84px}
 .card-art[data-cat="Salud"]{background:color-mix(in srgb,var(--teal-soft) 60%,var(--surface))}
 .card-art[data-cat="Salud"]::after{background:var(--teal)}
+.card-art[data-cat="Entrenamiento"]{background:color-mix(in srgb,var(--accent-soft) 70%,var(--surface))}

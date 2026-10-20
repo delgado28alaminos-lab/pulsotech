@@ -24,6 +24,10 @@ ARTICLES = {
     "04-pasos-al-dia-segun-edad.md": {"cat": "Salud", "date": "2026-10-20", "emoji": "👟"},
     "05-apps-controlar-sueno.md": {"cat": "Apps", "date": "2026-10-20", "emoji": "🌙"},
     "06-gps-futbol.md": {"cat": "Fútbol", "date": "2026-10-20", "emoji": "📡"},
+    "07-medir-frecuencia-cardiaca-movil.md": {"cat": "Salud", "date": "2026-10-20", "emoji": "❤️"},
+    "08-zonas-frecuencia-cardiaca.md": {"cat": "Entrenamiento", "date": "2026-10-20", "emoji": "📊"},
+    "09-pulsometro-pecho-o-muneca.md": {"cat": "Relojes", "date": "2026-10-20", "emoji": "💓"},
+    "10-que-es-vo2-max.md": {"cat": "Entrenamiento", "date": "2026-10-20", "emoji": "🫁"},
 }
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
           "septiembre", "octubre", "noviembre", "diciembre"]
