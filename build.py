@@ -20,6 +20,9 @@ ARTICLES = {
     "01-apps-entrenar-futbol-solo.md": {"cat": "Fútbol", "date": "2026-10-19", "emoji": "⚽"},
     "02-fiabilidad-calorias-smartwatch.md": {"cat": "Relojes", "date": "2026-10-19", "emoji": "⌚"},
     "03-sincronizar-strava-reloj.md": {"cat": "Apps", "date": "2026-10-19", "emoji": "📲"},
+    "04-pasos-al-dia-segun-edad.md": {"cat": "Salud", "date": "2026-10-20", "emoji": "👟"},
+    "05-apps-controlar-sueno.md": {"cat": "Apps", "date": "2026-10-20", "emoji": "🌙"},
+    "06-gps-futbol.md": {"cat": "Fútbol", "date": "2026-10-20", "emoji": "📡"},
 }
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
           "septiembre", "octubre", "noviembre", "diciembre"]
@@ -240,7 +243,7 @@ def main():
 
     write("index.html", home_page(articles))
     for a in articles:
-        write(f"{a['slug']}/index.html", article_page(a, [o for o in articles if o is not a]))
+        write(f"{a['slug']}/index.html", article_page(a, [o for o in articles if o is not a][:3]))
     for p in pages:
         write(f"{p['slug']}/index.html", static_page(p))
     write("404.html", layout(title=f"Página no encontrada | {NAME}", description="Esta página no existe.", path="/404.html",

@@ -121,3 +121,5 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .toc a{color:var(--ink);text-decoration:none}
 .toc a:hover{color:var(--accent);text-decoration:underline}
 .prose h2{scroll-margin-top:84px}
+.card-art[data-cat="Salud"]{background:color-mix(in srgb,var(--teal-soft) 60%,var(--surface))}
+.card-art[data-cat="Salud"]::after{background:var(--teal)}
