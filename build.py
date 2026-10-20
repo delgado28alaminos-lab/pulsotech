@@ -32,6 +32,12 @@ ARTICLES = {
     "12-como-elegir-reloj-deportivo.md": {"cat": "Relojes", "date": "2026-10-20", "emoji": "⌚"},
     "13-alargar-bateria-reloj-deportivo.md": {"cat": "Relojes", "date": "2026-10-20", "emoji": "🔋"},
     "14-smartwatch-o-pulsera-actividad.md": {"cat": "Relojes", "date": "2026-10-20", "emoji": "⚖️"},
+    "15-medir-velocidad-futbol.md": {"cat": "Fútbol", "date": "2026-10-20", "emoji": "⚡"},
+    "16-calentamiento-futbol.md": {"cat": "Fútbol", "date": "2026-10-20", "emoji": "🔥"},
+    "17-strava-entrenar-mejor.md": {"cat": "Apps", "date": "2026-10-20", "emoji": "🧡"},
+    "18-limpiar-correa-reloj.md": {"cat": "Relojes", "date": "2026-10-20", "emoji": "🧼"},
+    "19-auriculares-deporte.md": {"cat": "Entrenamiento", "date": "2026-10-20", "emoji": "🎧"},
+    "20-configurar-garmin-primera-vez.md": {"cat": "Relojes", "date": "2026-10-20", "emoji": "⚙️"},
 }
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
           "septiembre", "octubre", "noviembre", "diciembre"]
