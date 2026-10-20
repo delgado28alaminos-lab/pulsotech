@@ -14,7 +14,7 @@ NAME = "PulsoTech"
 TAGLINE = "Tecnología para entrenar mejor"
 EMAIL = "delgado28alaminos@gmail.com"
 GSC_VERIFICATION = "Yl6vsyT7Wm8YZBCkvP9fcp3DEsRIXIwle4AMyrHxQFc"  # Google Search Console
-ADSENSE_CLIENT = ""  # p. ej. "ca-pub-1234567890123456" cuando AdSense apruebe la web
+ADSENSE_CLIENT = "ca-pub-8344607375706556"  # ID de editor de AdSense
 
 # Datos de cada artículo que no están en el .md
 ARTICLES = {
@@ -81,7 +81,8 @@ def parse_page(path):
 def adsense_head():
     if not ADSENSE_CLIENT:
         return ""
-    return (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" '
+    return (f'<meta name="google-adsense-account" content="{ADSENSE_CLIENT}">\n'
+            f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" '
             'crossorigin="anonymous"></script>')
 
 
