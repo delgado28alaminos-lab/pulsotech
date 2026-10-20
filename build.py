@@ -13,6 +13,7 @@ SITE = "https://www.pulsotech.es"
 NAME = "PulsoTech"
 TAGLINE = "Tecnología para entrenar mejor"
 EMAIL = "delgado28alaminos@gmail.com"
+GSC_VERIFICATION = "Yl6vsyT7Wm8YZBCkvP9fcp3DEsRIXIwle4AMyrHxQFc"  # Google Search Console
 ADSENSE_CLIENT = ""  # p. ej. "ca-pub-1234567890123456" cuando AdSense apruebe la web
 
 # Datos de cada artículo que no están en el .md
@@ -81,6 +82,7 @@ def layout(*, title, description, path, body, extra_head=""):
 <title>{e(title)}</title>
 <meta name="description" content="{e(description)}">
 <link rel="canonical" href="{url}">
+<meta name="google-site-verification" content="{GSC_VERIFICATION}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{NAME}">
 <meta property="og:title" content="{e(title)}">
