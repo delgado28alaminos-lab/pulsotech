@@ -12,7 +12,7 @@ OUT = ROOT / "docs"
 SITE = "https://www.pulsotech.es"
 NAME = "PulsoTech"
 TAGLINE = "Tecnología para entrenar mejor"
-EMAIL = "contacto@pulsotech.es"  # cambiar por el email real de fer
+EMAIL = "delgado28alaminos@gmail.com"
 ADSENSE_CLIENT = ""  # p. ej. "ca-pub-1234567890123456" cuando AdSense apruebe la web
 
 # Datos de cada artículo que no están en el .md
