@@ -44,6 +44,9 @@ ARTICLES = {
     "24-bascula-inteligente.md": {"cat": "Salud", "date": "2026-10-20", "emoji": "⚖️"},
     "25-ciclocomputador-o-movil-bici.md": {"cat": "Ciclismo", "date": "2026-10-20", "emoji": "🚴"},
     "26-apps-entrenar-en-casa.md": {"cat": "Entrenamiento", "date": "2026-10-20", "emoji": "🏠"},
+    "27-cadencia-de-carrera.md": {"cat": "Running", "date": "2026-10-22", "emoji": "👣"},
+    "28-oxigeno-en-sangre-reloj.md": {"cat": "Salud", "date": "2026-10-22", "emoji": "🩸"},
+    "29-rodillo-inteligente.md": {"cat": "Ciclismo", "date": "2026-10-22", "emoji": "🚲"},
 }
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
           "septiembre", "octubre", "noviembre", "diciembre"]
@@ -326,10 +329,13 @@ def main():
                                   '<p>Puede que el enlace esté mal escrito o que el artículo se haya movido.</p>'
                                   '<p><a href="/">Volver al inicio</a></p></section>'))
 
+    lastmod = {f"/{a['slug']}/": a["date"] for a in articles}
+    lastmod["/"] = max(a["date"] for a in articles)
     urls = (["/"] + [f"/{a['slug']}/" for a in articles] + [f"/categoria/{cat_slug(c)}/" for c in cats]
             + [f"/{p['slug']}/" for p in pages])
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-          + "".join(f"  <url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
+          + "".join(f"  <url><loc>{SITE}{u}</loc>{f'<lastmod>{lastmod[u]}</lastmod>' if u in lastmod else ''}</url>\n" for u in urls)
+          + "</urlset>\n")
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
     write("CNAME", "www.pulsotech.es\n")
     if ADSENSE_CLIENT:
