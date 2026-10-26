@@ -47,6 +47,9 @@ ARTICLES = {
     "27-cadencia-de-carrera.md": {"cat": "Running", "date": "2026-10-22", "emoji": "👣"},
     "28-oxigeno-en-sangre-reloj.md": {"cat": "Salud", "date": "2026-10-22", "emoji": "🩸"},
     "29-rodillo-inteligente.md": {"cat": "Ciclismo", "date": "2026-10-22", "emoji": "🚲"},
+    "30-navegacion-mapas-reloj.md": {"cat": "Relojes", "date": "2026-10-26", "emoji": "🗺️"},
+    "31-entrenamiento-intervalos-reloj.md": {"cat": "Entrenamiento", "date": "2026-10-26", "emoji": "⏱️"},
+    "32-correr-de-noche-visible.md": {"cat": "Running", "date": "2026-10-26", "emoji": "🔦"},
 }
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
           "septiembre", "octubre", "noviembre", "diciembre"]
