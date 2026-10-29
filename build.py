@@ -50,6 +50,9 @@ ARTICLES = {
     "30-navegacion-mapas-reloj.md": {"cat": "Relojes", "date": "2026-10-26", "emoji": "🗺️"},
     "31-entrenamiento-intervalos-reloj.md": {"cat": "Entrenamiento", "date": "2026-10-26", "emoji": "⏱️"},
     "32-correr-de-noche-visible.md": {"cat": "Running", "date": "2026-10-26", "emoji": "🔦"},
+    "33-tiempo-de-recuperacion-reloj.md": {"cat": "Entrenamiento", "date": "2026-10-29", "emoji": "🔄"},
+    "34-copia-datos-deportivos.md": {"cat": "Apps", "date": "2026-10-29", "emoji": "💾"},
+    "35-llevar-movil-corriendo.md": {"cat": "Running", "date": "2026-10-29", "emoji": "📱"},
 }
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
           "septiembre", "octubre", "noviembre", "diciembre"]
