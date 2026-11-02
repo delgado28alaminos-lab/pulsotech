@@ -53,6 +53,9 @@ ARTICLES = {
     "33-tiempo-de-recuperacion-reloj.md": {"cat": "Entrenamiento", "date": "2026-10-29", "emoji": "🔄"},
     "34-copia-datos-deportivos.md": {"cat": "Apps", "date": "2026-10-29", "emoji": "💾"},
     "35-llevar-movil-corriendo.md": {"cat": "Running", "date": "2026-10-29", "emoji": "📱"},
+    "36-apps-ciclismo.md": {"cat": "Ciclismo", "date": "2026-11-02", "emoji": "🧭"},
+    "37-apps-senderismo-trail.md": {"cat": "Apps", "date": "2026-11-02", "emoji": "⛰️"},
+    "38-pagar-con-el-reloj.md": {"cat": "Relojes", "date": "2026-11-02", "emoji": "💳"},
 }
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
           "septiembre", "octubre", "noviembre", "diciembre"]
