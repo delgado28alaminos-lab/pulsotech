@@ -56,6 +56,9 @@ ARTICLES = {
     "36-apps-ciclismo.md": {"cat": "Ciclismo", "date": "2026-11-02", "emoji": "🧭"},
     "37-apps-senderismo-trail.md": {"cat": "Apps", "date": "2026-11-02", "emoji": "⛰️"},
     "38-pagar-con-el-reloj.md": {"cat": "Relojes", "date": "2026-11-02", "emoji": "💳"},
+    "39-cuando-cambiar-zapatillas.md": {"cat": "Running", "date": "2026-11-05", "emoji": "👟"},
+    "40-deteccion-caidas-reloj.md": {"cat": "Relojes", "date": "2026-11-05", "emoji": "🆘"},
+    "41-apps-organizar-equipo-futbol.md": {"cat": "Fútbol", "date": "2026-11-05", "emoji": "📋"},
 }
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
           "septiembre", "octubre", "noviembre", "diciembre"]
