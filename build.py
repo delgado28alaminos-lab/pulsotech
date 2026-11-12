@@ -62,6 +62,9 @@ ARTICLES = {
     "42-preparar-10-km-reloj.md": {"cat": "Running", "date": "2026-11-09", "emoji": "🏅"},
     "43-radar-trasero-bici.md": {"cat": "Ciclismo", "date": "2026-11-09", "emoji": "📡"},
     "44-medir-salto-vertical-app.md": {"cat": "Entrenamiento", "date": "2026-11-09", "emoji": "🦘"},
+    "45-anillo-inteligente.md": {"cat": "Salud", "date": "2026-11-12", "emoji": "💍"},
+    "46-pistola-de-masaje.md": {"cat": "Entrenamiento", "date": "2026-11-12", "emoji": "💆"},
+    "47-grabar-analizar-partidos-futbol.md": {"cat": "Fútbol", "date": "2026-11-12", "emoji": "🎥"},
 }
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
           "septiembre", "octubre", "noviembre", "diciembre"]
